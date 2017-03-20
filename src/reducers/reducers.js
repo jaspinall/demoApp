@@ -3,7 +3,7 @@ import {
   REQUEST_DATA, RECEIVE_DATA, ADD_SONG, REMOVE_SONG
 } from '../actions/actions';
 
-const songs = (state = { songs: [] }, action) => {
+const songs = (state = [], action) => {
   switch (action.type) {
     case ADD_SONG:
       return Object.assign(
@@ -28,13 +28,33 @@ const songs = (state = { songs: [] }, action) => {
   }
 }
 
-const fetchData = ( state = {}, action ) => {
-  return state;
+const fetchSongs = ( state = {
+    isFetching: false,
+    data: []
+  }, action ) => {
+  switch(action.type) {
+    case REQUEST_DATA:
+      return Object.assign(
+        {},
+        state,
+        { isFetching: true }
+      )
+    case RECEIVE_DATA:
+      return Object.assign(
+        {},
+        state,
+        { isFetching: false,
+          data: action.data
+        }
+      )
+    default:
+      return state;
+  }
 }
 
 const rootReducer = combineReducers({
   songs,
-  fetchData
+  fetchSongs
 })
 
 export default rootReducer;

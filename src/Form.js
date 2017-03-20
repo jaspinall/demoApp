@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addSong } from './actions/actions'
+import { addSong, fetchData } from './actions/actions'
 
 let Form = ({ dispatch }) => {
   let input
@@ -12,7 +12,7 @@ let Form = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addSong(input.value))
+        dispatch(fetchData(input.value))
         input.value = ''
       }}>
         <input ref={node => {
@@ -25,6 +25,7 @@ let Form = ({ dispatch }) => {
     </div>
   )
 }
+
 Form = connect()(Form)
 
 export default Form
