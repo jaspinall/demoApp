@@ -29,7 +29,7 @@ export const requestData = (song) => {
 export const receiveData = (json) => {
   return {
     type: RECEIVE_DATA,
-    data: json.tracks.items.map(el => {
+    songs: json.tracks.items.map(el => {
       return {
         id: el.id,
         name: el.name,

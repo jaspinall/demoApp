@@ -2,9 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addSong, fetchData } from './actions/actions'
 
-let Form = ({ dispatch }) => {
-  let input
-
+let Form = ( props ) => {
+  let input;
   return (
     <div>
       <form onSubmit={e => {
@@ -12,8 +11,9 @@ let Form = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(fetchData(input.value))
-        input.value = ''
+        props.dispatch(fetchData(input.value))
+        input.value = '';
+        props.history.push('/results');
       }}>
         <input ref={node => {
           input = node

@@ -30,7 +30,7 @@ const songs = (state = [], action) => {
 
 const fetchSongs = ( state = {
     isFetching: false,
-    data: []
+    songs: []
   }, action ) => {
   switch(action.type) {
     case REQUEST_DATA:
@@ -44,7 +44,7 @@ const fetchSongs = ( state = {
         {},
         state,
         { isFetching: false,
-          data: action.data
+          songs: action.songs
         }
       )
     default:
